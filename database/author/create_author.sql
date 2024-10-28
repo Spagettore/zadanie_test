@@ -1,0 +1,11 @@
+CREATE TABLE `author` (
+	`id` INT(11) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+	`first_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_bin',
+	`family` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_bin',
+	`second_name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_bin',
+	`birthday` DATE NOT NULL,
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8mb4_bin'
+ENGINE=InnoDB
+;

@@ -1,0 +1,15 @@
+CREATE TABLE `comments` (
+	`id` INT(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+	`user_id` INT(10) UNSIGNED NOT NULL,
+	`article_id` INT(10) UNSIGNED NOT NULL,
+	`text` VARCHAR(500) NOT NULL DEFAULT '' COLLATE 'utf8mb4_bin',
+	`date` DATE NOT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `users` (`user_id`) USING BTREE,
+	INDEX `articles` (`article_id`) USING BTREE,
+	CONSTRAINT `articles` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT `users` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON UPDATE CASCADE ON DELETE CASCADE
+)
+COLLATE='utf8mb4_bin'
+ENGINE=InnoDB
+;

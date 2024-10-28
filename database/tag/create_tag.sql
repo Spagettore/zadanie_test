@@ -1,0 +1,9 @@
+CREATE TABLE `tag` (
+	`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NOT NULL COLLATE 'utf8mb4_bin',
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `tag_unique` (`name`) USING BTREE
+)
+COLLATE='utf8mb4_bin'
+ENGINE=InnoDB
+;
