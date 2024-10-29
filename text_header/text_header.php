@@ -1,10 +1,18 @@
 <?php
 function generate_header($text, $url, $size = 250): string
 {
+    if(!strlen($text)){
+        return $text;
+    }
     $breaker = IntlBreakIterator::createSentenceInstance('ru_RU');
     $breaker->setText($text);
     $offset = $breaker->preceding($size);
-    $header = substr($text,0,$offset);
+    $header = $text;
+
+    //если предложение найдено, берем его
+    if($offset){
+        $header = substr($text,0,$offset);
+    }
 
     //удаляем пробел и знак препинания в конце строки
     while(ispunctorspace($header[strlen($header)-1])){
@@ -17,6 +25,11 @@ function generate_header($text, $url, $size = 250): string
         $breaker->setText($header);
         $offset = $breaker->preceding($breaker->last());
         $header = substr($header,0,$offset);
+    }
+
+    //удаляем пробел и знак препинания в конце строки
+    while(ispunctorspace($header[strlen($header)-1])){
+        $header = substr($header,0,-1);
     }
     $breaker->setText($header);
 
